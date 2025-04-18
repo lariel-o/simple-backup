@@ -43,7 +43,9 @@ fi
 
 if [[ $warning_count -ne 0 ]]; then
     echo -e "\nProgram finished with $warning_count warnings"
+    exit 2
 else
     echo -e "Program finished with 0 warnings"
+    exit 0
 fi
 
