@@ -41,5 +41,9 @@ if [[ -n $1 ]]; then
     mv $backup_dir_name $1
 fi
 
-echo -e "\n\nProgram finished with $warning_count warnings"
+if [[ $warning_count -ne 0 ]]; then
+    echo -e "\nProgram finished with $warning_count warnings"
+else
+    echo -e "Program finished with 0 warnings"
+fi
 
