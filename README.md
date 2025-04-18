@@ -20,3 +20,10 @@ Or execute it using bash
 ```bash
 bash exec.sh
 ```
+
+## Extra
+If you want, you can also pass an argument to the script(it must be a path). With that, the script will automatically create the backup folder at the path passed. e.g:
+```bass
+./exec.sh ~/raul/seixas
+```
+The script will create the `Baackup-YYYY-MM-DD` at `/home/user/raul/seixas`
