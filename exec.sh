@@ -13,25 +13,33 @@ fi
 mkdir $backup_dir_name
 
 
-for i in $(cat list);
+warning_count=0
+for i in $(cat LIST);
 do
+    # check if the file being read exists
     if [[ !(-e $i) ]]; then
         echo "============*WARNING*============"   
         echo "[ $i ] does not exists, please check it!"
         echo -e "================================="
+        warning_count=$(($warning_count+1))
         continue
     fi
 
+    # copy using -r if it is a dir
     if [[ -d $i ]]; then
         cp -r $i $backup_dir_name
         continue
     fi
 
+    # just a normal copy if it is a file
     cp $i $backup_dir_name
 done
 
 
+# move to $1
 if [[ -n $1 ]]; then
-    echo "is not null"
+    mv $backup_dir_name $1
 fi
+
+echo -e "\n\nProgram finished with $warning_count warnings"
 
